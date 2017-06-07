@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using SSHomeProject.Filters;
 using System.Web.Mvc;
 
 namespace SSHomeProject
@@ -7,7 +7,7 @@ namespace SSHomeProject
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new CustomHandleErrorAttribute());
         }
     }
 }

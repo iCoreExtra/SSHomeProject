@@ -8,6 +8,9 @@ namespace SSHomeCommon.Helpers
 {
     public static class ConfigHelper
     {
-        
+        public static string GetApplicationErrorLogSource()
+        {
+            return ConfigurationManager.AppSettings[CommonConstant.ErrorLogSource];
+        }
     }
 }
