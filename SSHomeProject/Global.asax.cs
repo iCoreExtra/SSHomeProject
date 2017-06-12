@@ -10,6 +10,7 @@ using SSHomeProject.Helpers;
 using SSHomeCommon.Constants;
 using SSHomeProject.Controllers;
 using SSHomeProject.Unity;
+using SSHomeProject.Filters;
 
 namespace SSHomeProject
 {
@@ -17,11 +18,26 @@ namespace SSHomeProject
     {
         protected void Application_Start()
         {
+            // Register Areas
             AreaRegistration.RegisterAllAreas();
+
+            // Register global filters
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            IFilterProvider[] providers = FilterProviders.Providers.ToArray();
+            FilterProviders.Providers.Clear();
+            FilterProviders.Providers.Add(new ExcludeFilterProvider(providers));
+            
+            // Register routes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //Register css and script bundles
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BundleTable.EnableOptimizations = false;
+
+            // Initialize Dependency Injection
             BootStrapper.Initialise();
+            
+            GlobalConfiguration.Configuration.EnsureInitialized();
         }
 
         protected void Application_Error(object sender, EventArgs e)
