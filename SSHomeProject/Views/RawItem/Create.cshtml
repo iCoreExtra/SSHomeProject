@@ -1,0 +1,73 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+
+@model SSHomeProject.Models.RawItemMasterViewModel
+
+@{
+    ViewBag.Title = "Create Raw Item";
+}
+
+<h2>Create</h2>
+<fieldset>
+    @using (Html.BeginForm("", "", new { role = "form", enctype = "multipart/form-data", id = "frmCreateRawMaterial" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.ItemName)
+                    @Html.TextBoxFor(model => model.ItemName, new { @placeholder = "Enter Item Name" })
+                    @Html.ValidationMessageFor(model => model.ItemName, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Material)
+                    @Html.TextBoxFor(model => model.Material, new { @placeholder = "Enter Material" })
+                    @Html.ValidationMessageFor(model => model.Material, " ", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.Label("Unit")
+                    @Html.DropDownListFor(model => model.UnitId, DropDownHelper.UnitList(), new { @id = "UnitId" })
+                    @Html.ValidationMessageFor(model => model.UnitId, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.Label("Brand")
+                    @Html.DropDownListFor(model => model.BrandId, DropDownHelper.UnitList(),new { @id = "BrandId" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Description1)
+                    @Html.TextAreaFor(model => model.Description1, new { @placeholder = "Enter Description" })
+                    @Html.ValidationMessageFor(model => model.Description1, " ", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Description2)
+                    @Html.TextAreaFor(model => model.Description2, new { @placeholder = "Enter Description" })
+                    @Html.ValidationMessageFor(model => model.Description2, " ", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                     @Html.LabelFor(model => model.Description3)
+                    @Html.TextAreaFor(model => model.Description3, new { @placeholder = "Enter Description" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Description4)
+                    @Html.TextAreaFor(model => model.Description4, new { @placeholder = "Enter Description" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Description5)
+                    @Html.TextAreaFor(model => model.Description5, new { @placeholder = "Enter Description" })
+                </div>
+            </div>
+        </div>
+      
+     }
+</fieldset>
+

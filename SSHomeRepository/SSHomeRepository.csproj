@@ -44,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brand\BrandMasterRepository.cs" />
     <Compile Include="Common\Base.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawItem\RawItemMasterRepository.cs" />
+    <Compile Include="Unit\UnitMasterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -64,5 +67,6 @@
       <Name>SSHomeRepositoryTypes</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

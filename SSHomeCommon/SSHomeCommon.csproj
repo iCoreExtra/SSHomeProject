@@ -45,6 +45,8 @@
     <Compile Include="Helpers\ActivatorHelper.cs" />
     <Compile Include="Helpers\SSHomeLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\Result.cs" />
+    <Compile Include="Result\ResultStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

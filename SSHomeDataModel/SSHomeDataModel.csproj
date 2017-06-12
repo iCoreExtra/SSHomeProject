@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brand\BrandMaster.cs" />
     <Compile Include="Common\Base.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawItem\RawItemMaster.cs" />
+    <Compile Include="Unit\UnitMaster.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">

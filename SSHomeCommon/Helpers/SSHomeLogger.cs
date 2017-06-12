@@ -14,7 +14,6 @@ namespace SSHomeCommon.Helpers
             EventLog logEntry = new EventLog();
             logEntry.Source = "SSHome.Web";
             logEntry.WriteEntry(string.Concat(GetExecutingMethodName(), "\n", exception), EventLogEntryType.Error);            
-            
         }
 
         /// <summary>

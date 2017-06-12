@@ -208,13 +208,16 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RawItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AjaxExtension.cs" />
+    <Compile Include="Helpers\DropDownHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RawItem\RawItemMasterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Unity\BootStrapper.cs" />
@@ -276,6 +279,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\RawItem\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +304,10 @@
     <ProjectReference Include="..\SSHomeBusinessLayerTypes\SSHomeBusinessLayerTypes.csproj">
       <Project>{eb5ae3a1-3cb1-4609-9487-2dd7fd674702}</Project>
       <Name>SSHomeBusinessLayerTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSHomeBusinessLayer\SSHomeBusinessLayer.csproj">
+      <Project>{0abec8ff-085b-4278-ba17-dfd4deba08b5}</Project>
+      <Name>SSHomeBusinessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">
       <Project>{aa6072c0-dd53-4b25-a865-89e72d5e0ab4}</Project>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using SSHomeBusinessLayerTypes;
+using SSHomeBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,14 @@ namespace SSHomeProject.Unity
         private static IUnityContainer BuildUnityContainer()
         {
             container = new UnityContainer();
+            //RawItemMaster
+            container.RegisterType<IRawItemMasterBL,RawItemMasterBL>();
+
+            //UnitMaster
+            container.RegisterType<IUnitMasterBL,UnitMasterBL>();
+
+            //BrandMaster
+            container.RegisterType<IBrandMasterBL, BrandMasterBL>();
 
             return container;
         }

@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brand\IBrandMasterRepository.cs" />
+    <Compile Include="RawItem\IRawItemMasterRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\IUnitMasterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">
@@ -53,5 +56,6 @@
       <Name>SSHomeDataModel</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

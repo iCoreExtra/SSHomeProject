@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SSHomeCommon.Helpers;
 using SSHomeRepositoryTypes;
+using SSHomeRepository;
 using System.Threading.Tasks;
 
 namespace SSHomeRepositoryFactory
@@ -33,7 +34,14 @@ namespace SSHomeRepositoryFactory
 
         private static void LoadContainer()
         {
-            
+            //RawItemMaster
+            container.Add(typeof(IRawItemMasterRepository), typeof(RawItemMasterRepository));
+
+            //UnitMaster
+            container.Add(typeof(IUnitMasterRepository), typeof(UnitMasterRepository));
+
+            //BrandMaster
+            container.Add(typeof(IBrandMasterRepository), typeof(BrandMasterRepository));
         }
     }
 }
