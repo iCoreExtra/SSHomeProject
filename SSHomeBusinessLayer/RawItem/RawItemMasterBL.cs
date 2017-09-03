@@ -33,6 +33,22 @@ namespace SSHomeBusinessLayer
         {
             return _repository.Add(model);
         }
+
+        public Result<RawItemMaster> RawItemUpdate(RawItemMaster model)
+        {
+            return _repository.RawItemUpdate(model);
+        }
+       
+
+        public IList<RawItemMaster> GetRawItemListAll()
+        {
+            return _repository.GetRawItemListAll();
+        }
+
+        public RawItemMaster GetRawItemDetails(Guid itemId)
+        {
+            return _repository.GetRawItemDetails(itemId);
+        }
         #endregion
     }
 }

@@ -12,5 +12,11 @@ namespace SSHomeBusinessLayerTypes
     public interface IRawItemMasterBL : IBusinessLayer
     {
         Result<RawItemMaster> Add(RawItemMaster model);
+
+        Result<RawItemMaster> RawItemUpdate(RawItemMaster model);
+
+        IList<RawItemMaster> GetRawItemListAll();
+
+        RawItemMaster GetRawItemDetails(Guid itemId);
     }
 }

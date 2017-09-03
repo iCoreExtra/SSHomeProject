@@ -11,5 +11,11 @@ namespace SSHomeRepositoryTypes
     public interface IBrandMasterRepository : IRepository
     {
         IList<BrandMaster> GetAll();
+
+        Result<BrandMaster> Add(BrandMaster model);
+
+        Result<BrandMaster> UpdateBrandDetails(BrandMaster brandeditdetails);
+
+        BrandMaster GetbrandDetails(int brandId);
     }
 }

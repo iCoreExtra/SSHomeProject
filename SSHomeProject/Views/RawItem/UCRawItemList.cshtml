@@ -1,0 +1,71 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model RawItemListViewModel
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            @if (Model.RawItemList.Count > 0)
+            {
+                <div class="seller-box-wrap">
+                    <div class="seller-frm-wrap">
+                        <div class="rfq-tbl-wrap">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rfq-tbl">
+                                <tbody>
+                                    <tr class="tbl-head">
+                                        <td class="text-center">Item Name</td>
+                                        <td class="text-center">Material</td>
+                                        <td class="text-center">Color</td>
+                                        <td class="text-center">Description 1</td>
+                                        <td class="text-center">Details</td>
+                                        <td class="text-center">Edit</td>
+                                    </tr>
+
+                                    @foreach (var rawitemDetails in Model.RawItemList)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                @rawitemDetails.ItemName
+                                            </td>
+                                            <td class="text-center">
+                                                @rawitemDetails.Material
+                                            </td>
+                                            <td class="text-center">
+                                                @rawitemDetails.Color
+                                            </td>
+                                            <td class="text-center">
+                                                @rawitemDetails.Description1
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionRawItemDetails ,new { @itemId = rawitemDetails.ItemId })">Details</a>
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionRawItemEdit ,new { @itemId = rawitemDetails.ItemId })">Edit</a>
+                                            </td>
+                                       </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <p>
+                        <div class="alert alert-info text-center" role="alert"> No Raw Items..  </div>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="text-center pagedlistbidoya">
+            @Html.PagedListPager(Model.RFQBuyers, page => Url.Action(CommonConstant.ActionRFQRFQBuyerList, new { page = page, TokenId = Model.TokenId, ProductName = Model.ProductName, CategoryName = Model.CategoryName }))
+        </div>
+    </div>*@
+</div>

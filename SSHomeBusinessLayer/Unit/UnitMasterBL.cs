@@ -34,6 +34,22 @@ namespace SSHomeBusinessLayer
         {
             return _repository.GetAll();
         }
+
+        public Result<UnitMaster> Add(UnitMaster unitDetails)
+        {
+            return _repository.Add(unitDetails);
+        }
+
+        public Result<UnitMaster> UpdateUnitDetails(UnitMaster uniteditdetails)
+        {
+            return _repository.UpdateUnitDetails(uniteditdetails);
+        }
+
+        public UnitMaster GetunitDetails(int unitId)
+        {
+            return _repository.GetunitDetails(unitId);
+        }
+
         #endregion
     }
 }

@@ -41,10 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brand\IBrandMasterRepository.cs" />
+    <Compile Include="Client\IClientMasterRepository.cs" />
+    <Compile Include="CustomerType\ICustomerTypeMasterRepository.cs" />
+    <Compile Include="ItemType\IItemTypeMaserRepository.cs" />
+    <Compile Include="Location\ICityMasterRepository.cs" />
+    <Compile Include="Location\IStateMasterRepository.cs" />
     <Compile Include="RawItem\IRawItemMasterRepository.cs" />
+    <Compile Include="Referral\IReferralMasterRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Store\IStoreMasterRepository.cs" />
     <Compile Include="Unit\IUnitMasterRepository.cs" />
+    <Compile Include="Vendor\IVendorMasterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">

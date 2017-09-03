@@ -7,6 +7,7 @@ using SSHomeBusinessLayerTypes;
 using SSHomeRepositoryFactory;
 using SSHomeRepositoryTypes;
 using SSHomeDataModel;
+using SSHomeCommon;
 
 namespace SSHomeBusinessLayer
 {
@@ -34,6 +35,22 @@ namespace SSHomeBusinessLayer
         {
             return _repository.GetAll();
         }
+
+        public Result<BrandMaster> Add(BrandMaster model)
+        {
+            return _repository.Add(model);
+        }
+
+        public Result<BrandMaster> UpdateBrandDetails(BrandMaster brandeditdetails)
+        {
+            return _repository.UpdateBrandDetails(brandeditdetails);
+        }
+
+        public BrandMaster GetbrandDetails(int brandId)
+        {
+            return _repository.GetbrandDetails(brandId);
+        }
+
         #endregion
     }
 }

@@ -45,10 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brand\BrandMasterRepository.cs" />
+    <Compile Include="Client\ClientMasterRepository.cs" />
     <Compile Include="Common\Base.cs" />
+    <Compile Include="CustomerType\CustomerTypeMasterRepository.cs" />
+    <Compile Include="ItemType\ItemTypeRepository.cs" />
+    <Compile Include="Location\CityMasterRepository.cs" />
+    <Compile Include="Location\StateMasterRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RawItem\RawItemMasterRepository.cs" />
+    <Compile Include="Referral\ReferralMasterRepository.cs" />
+    <Compile Include="Store\StoreMasterRepository.cs" />
     <Compile Include="Unit\UnitMasterRepository.cs" />
+    <Compile Include="Vendor\VendorMasterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

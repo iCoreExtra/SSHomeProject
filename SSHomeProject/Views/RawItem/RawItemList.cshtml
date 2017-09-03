@@ -1,0 +1,28 @@
+﻿@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model RawItemListViewModel
+
+@{
+    ViewBag.Title = "Raw Item List";
+}
+
+<div>
+    <div class="mid-cnt-wrap">
+        <div id="tabs">
+        
+            <div id="searchContainer">
+               
+            </div>
+
+            <div id="rawItemListContainer" style="padding:10px">
+                @Html.Partial(CommonConstant.ViewRawItemUCRawItemList)
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

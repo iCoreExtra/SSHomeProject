@@ -42,6 +42,31 @@ namespace SSHomeRepositoryFactory
 
             //BrandMaster
             container.Add(typeof(IBrandMasterRepository), typeof(BrandMasterRepository));
+
+            //ItemTypeMaster
+            container.Add(typeof(IItemTypeMasterRepository), typeof(ItemTypeRepository));
+
+            //ReferralMaster
+            container.Add(typeof(IReferralMasterRepository), typeof(ReferralMasterRepository));
+
+            //CustomerTypeMaster
+            container.Add(typeof(ICustomerTypeMasterRepository), typeof(CustomerTypeMasterRepository));
+
+            //StoreMaster
+            container.Add(typeof(IStoreMasterRepository), typeof(StoreMasterRepository));
+
+            //StateMaster
+            container.Add(typeof(IStateMasterRepository), typeof(StateMasterRepository));
+
+            //CityMaster
+            container.Add(typeof(ICityMasterRepository), typeof(CityMasterRepository));
+
+            //VendorMaster
+            container.Add(typeof(IVendorMasterRepository), typeof(VendorMasterRepository));
+
+            //ClientMaster
+            container.Add(typeof(IClientMasterRepository), typeof(ClientMasterRepository));
+
         }
     }
 }

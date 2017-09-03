@@ -1,4 +1,5 @@
-﻿using SSHomeDataModel;
+﻿using SSHomeCommon;
+using SSHomeDataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,12 @@ namespace SSHomeBusinessLayerTypes
     public interface IBrandMasterBL: IBusinessLayer
     {
         IList<BrandMaster> GetAll();
+
+        Result<BrandMaster> Add(BrandMaster model);
+
+        Result<BrandMaster> UpdateBrandDetails(BrandMaster brandeditdetails);
+
+        BrandMaster GetbrandDetails(int brandId);
+
     }
 }

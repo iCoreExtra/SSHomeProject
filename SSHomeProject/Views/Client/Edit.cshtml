@@ -1,0 +1,129 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model ClientMasterViewModel
+
+@{
+    ViewBag.Title = "Update Client";
+}
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionClientEdit, CommonConstant.ControllerClient, new { role = "form", enctype = "multipart/form-data", id = "frmEditClient" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+       
+            <div class="container-fluid" style="margin-top:50px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "Enter First Name" })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Enter Last Name" })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.CompanyName)
+                        @Html.TextBoxFor(model => model.CompanyName, new { @placeholder = "Enter Company Name" })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Number1)
+                        @Html.TextBoxFor(model => model.Number1, new { @placeholder = "Enter Contact No" })
+                        @Html.ValidationMessageFor(model => model.Number1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Number2)
+                        @Html.TextBoxFor(model => model.Number2, new { @placeholder = "Enter Contact No" })
+                        @Html.ValidationMessageFor(model => model.Number2, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email1)
+                        @Html.TextBoxFor(model => model.Email1, new { @placeholder = "Enter Email" })
+                        @Html.ValidationMessageFor(model => model.Email1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email2)
+                        @Html.TextBoxFor(model => model.Email2, new { @placeholder = "Enter Email" })
+                        @Html.ValidationMessageFor(model => model.Email2, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.DateOfBirth)
+                        @Html.TextBoxFor(model => model.DateOfBirth, new { @placeholder = "Enter DOB" })
+                        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Anniversary)
+                        @Html.TextBoxFor(model => model.Anniversary, new { @placeholder = "Anniversary" })
+                        @Html.ValidationMessageFor(model => model.Anniversary, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Profession)
+                        @Html.TextBoxFor(model => model.Profession, new { @placeholder = "Enter Profession" })
+                        @Html.ValidationMessageFor(model => model.Profession, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("Reference") <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.ReferralId, DropDownHelper.ReferenceList())
+                        @Html.ValidationMessageFor(model => model.ReferralId)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Label("Store") <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.StoreId, DropDownHelper.StoreList())
+                        @Html.ValidationMessageFor(model => model.StoreId)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("Customer Type") <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.CustomerTypeId, DropDownHelper.CustomerTypeList())
+                        @Html.ValidationMessageFor(model => model.CustomerTypeId)
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center form-group">
+                <input type="submit" value="Update" />
+            </div>
+
+            @Html.HiddenFor(model => model.ClientId)
+    }
+</fieldset>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(window).load(function () {
+
+        });
+
+        $(".btn-backtolist").on("click", function (e) {
+            window.location = "@Url.Action(CommonConstant.ActionClientList, CommonConstant.ControllerClient)";
+            e.preventDefault();
+        });
+
+      
+
+    </script>
+}
+

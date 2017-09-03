@@ -11,5 +11,11 @@ namespace SSHomeRepositoryTypes
     public interface IRawItemMasterRepository : IRepository
     {
         Result<RawItemMaster> Add(RawItemMaster model);
+
+        Result<RawItemMaster> RawItemUpdate(RawItemMaster model);
+
+        IList<RawItemMaster> GetRawItemListAll();
+
+        RawItemMaster GetRawItemDetails(Guid itemId);
     }
 }

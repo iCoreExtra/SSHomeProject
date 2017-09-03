@@ -15,6 +15,8 @@ namespace SSHomeDataModel
 
         public string Material { get; set; }
 
+        public string Color { get; set; }
+
         public string Description1 { get; set; }
 
         public string Description2 { get; set; }
@@ -28,6 +30,8 @@ namespace SSHomeDataModel
         public int UnitId { get; set; }
 
         public long BrandId { get; set; }
+
+        public int ItemTypeId { get; set; }
 
     }
     #endregion data model class end

@@ -57,6 +57,30 @@ namespace SSHomeProject.Unity
             //BrandMaster
             container.RegisterType<IBrandMasterBL, BrandMasterBL>();
 
+            //ItemTypeMaster
+            container.RegisterType<IItemTypeMasterBL, ItemTypeMasterBL>();
+
+            //ReferralMaster
+            container.RegisterType<IReferralMasterBL, ReferralMasterBL>();
+
+            //CustomerTypeMaster
+            container.RegisterType<ICustomerTypeMasterBL, CustomerTypeMasterBL>();
+
+            //StoreMaster
+            container.RegisterType<IStoreMasterBL, StoreMasterBL>();
+
+            //StateMaster
+            container.RegisterType<IStateMasterBL, StateMasterBL>();
+
+            //CityMaster
+            container.RegisterType<ICityMasterBL, CityMasterBL>();
+
+            //VendorMaster
+            container.RegisterType<IVendorMasterBL, VendorMasterBL>();
+
+            //ClientMaster
+            container.RegisterType<IClientMasterBL, ClientMasterBL>();
+
             return container;
         }
 

@@ -1,0 +1,36 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+
+@model ItemTypeMasterViewModel
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionItemTypeEdit, CommonConstant.ControllerItemType, new { role = "form", enctype = "multipart/form-data", id = "frmEditItemType" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid" style="margin-top:50px;">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { @placeholder = "Enter Name" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="text-center form-group">
+            <input type="submit" value="Update" />
+        </div>
+
+        @Html.HiddenFor(Model => Model.ItemTypeId);
+    }
+</fieldset>
+
