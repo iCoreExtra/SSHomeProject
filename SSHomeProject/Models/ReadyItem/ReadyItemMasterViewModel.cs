@@ -18,20 +18,25 @@ namespace SSHomeProject.Models
         [Required(ErrorMessage = "Please Enter Description1")]
         public string Description1 { get; set; }
 
+       
         public string Description2 { get; set; }
 
         public string Description3 { get; set; }
 
+        [Required(ErrorMessage = "Please Enter Material")]
         public string Material { get; set; }
 
+        [Required(ErrorMessage = "Please Enter Color")]
         public string Color { get; set; }
 
         public Decimal Size { get; set; }
 
         public Decimal Amount { get; set; }
 
-        public int PatternId { get; set; }
+        //[Required(ErrorMessage = "Please Select Pattern Id")]
+        //public int PatternId { get; set; }
 
+        [Required(ErrorMessage = "Please Select Store Id")]
         public int StoreId { get; set; }
 
         public string StyleCode { get; set; }
