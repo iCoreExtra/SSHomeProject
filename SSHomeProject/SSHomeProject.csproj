@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -249,7 +250,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -308,6 +311,10 @@
     <ProjectReference Include="..\SSHomeBusinessLayerTypes\SSHomeBusinessLayerTypes.csproj">
       <Project>{eb5ae3a1-3cb1-4609-9487-2dd7fd674702}</Project>
       <Name>SSHomeBusinessLayerTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSHomeBusinessLayer\SSHomeBusinessLayer.csproj">
+      <Project>{0abec8ff-085b-4278-ba17-dfd4deba08b5}</Project>
+      <Name>SSHomeBusinessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">
       <Project>{aa6072c0-dd53-4b25-a865-89e72d5e0ab4}</Project>

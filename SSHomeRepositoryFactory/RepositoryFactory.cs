@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using SSHomeCommon.Helpers;
 using SSHomeRepositoryTypes;
-using System.Threading.Tasks;
+using SSHomeRepository;
 
 namespace SSHomeRepositoryFactory
 {
@@ -33,7 +33,7 @@ namespace SSHomeRepositoryFactory
 
         private static void LoadContainer()
         {
-            
+            container.Add(typeof(IEmployeeMasterRepository), typeof(EmployeeMasterRepository));
         }
     }
 }

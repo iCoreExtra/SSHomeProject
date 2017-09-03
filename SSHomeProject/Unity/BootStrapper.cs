@@ -1,9 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using SSHomeBusinessLayerTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using SSHomeBusinessLayer;
 using System.Web.Http;
 using System.Web.Mvc;
 
@@ -48,6 +45,9 @@ namespace SSHomeProject.Unity
         {
             container = new UnityContainer();
 
+            container.RegisterType<IEmployeeMasterBL, EmployeeMasterBL>();
+            //container.RegisterType<AccountController>(new InjectionConstructor());
+            //container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
             return container;
         }
 

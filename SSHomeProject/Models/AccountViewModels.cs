@@ -79,6 +79,14 @@ namespace SSHomeProject.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Mobile { get; set; }
+        public string Phone2 { get; set; }
+        public string Email2 { get; set; }
+        public string DateOfBirth { get; set; }
+        public int DesignationId { get; set; }
     }
 
     public class ResetPasswordViewModel
