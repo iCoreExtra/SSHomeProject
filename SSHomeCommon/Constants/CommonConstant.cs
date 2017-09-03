@@ -8,8 +8,19 @@ namespace SSHomeCommon.Constants
 {
     public class CommonConstant
     {
+        #region Configuration constants
 
-        #region Controller
+        public const string ConnectionString = "SSHomeConnectionString";
+        public const string ErrorLogSource = "ErrorLogSource";
+
+        #endregion
+
+        /// <summary>
+        /// Constant variable for controller
+        /// Naming convention of variable in this region should be prefix with word Controller followed by controller name
+        /// for e.g to create constant for HomeController constant name should be ControllerHome
+        /// </summary>
+        #region Controller Constants
 
         public const string ControllerError = "Error";
 
@@ -25,7 +36,12 @@ namespace SSHomeCommon.Constants
 
         #endregion
 
-        #region Action Methods
+        /// <summary>
+        /// Constant variable for controller action method
+        /// Naming convention of variable in this region should be prefix with word Action followed by controller name followed by Action method name
+        /// for e.g to create constant for Index method of HomeController constant name should be ActionHomeIndex
+        /// </summary>
+        #region Action Methods Constants
 
         public const string ActionErrorInternalError = "InternalError";
         public const string ActionErrorResourceNotFound = "ResourceNotFound";
@@ -75,7 +91,7 @@ namespace SSHomeCommon.Constants
 
         #endregion Action Methods
 
-        #region View
+        #region Views Constants
 
         public const string ViewRawItemUCRawItemList = "UCRawItemList";
 
@@ -95,17 +111,23 @@ namespace SSHomeCommon.Constants
 
         public const string ViewClientUCClientList = "UCClientList";
 
+        public const string ViewErrorAjaxError = "~/Views/Error/AjaxError.cshtml";
+        public const string ViewErrorInternalError = "~/Views/Error/InternalError.cshtml";
+        public const string ViewErrorBadRequest = "~/Views/Error/BadRequest.cshtml";
+        public const string ViewErrorResourceNotFound = "~/Views/Error/ResourceNotFound.cshtml";
+        public const string ViewErrorUnauthorize = "~/Views/Error/Unauthorize.cshtml";
+
         #endregion
 
         #region Column Constant
-        
+
         public const string ColumnAddressId = "AddressId";
         public const string ColumnAddressLine1 = "AddressLine1";
         public const string ColumnAddressLine2 = "AddressLine2";
         public const string ColumnPincode = "Pincode";
         public const string ColumnCityId = "CityId";
 
-        #endregion
+        #endregion       
 
     }
 }

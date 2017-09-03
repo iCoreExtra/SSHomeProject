@@ -3,17 +3,34 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
+using SSHomeCommon.Helpers;
 
 namespace SSHomeCommon.Helpers
 {
     public static class SSHomeLogger
     {
         public static void LogException(Exception exception)
+        {            
+            if (!EventLog.SourceExists(ConfigHelper.GetApplicationErrorLogSource()))
+            {
+                EventLog.CreateEventSource(ConfigHelper.GetApplicationErrorLogSource(), "Application");
+            }
+            EventLog.WriteEntry(ConfigHelper.GetApplicationErrorLogSource(), CreateErrorMessage(exception.ToString()), EventLogEntryType.Error, 1);            
+        }
+
+        public static void LogException(string exception)
         {
-            EventLog logEntry = new EventLog();
-            logEntry.Source = "SSHome.Web";
-            logEntry.WriteEntry(string.Concat(GetExecutingMethodName(), "\n", exception), EventLogEntryType.Error);            
+            if (!EventLog.SourceExists(ConfigHelper.GetApplicationErrorLogSource()))
+            {
+                EventLog.CreateEventSource(ConfigHelper.GetApplicationErrorLogSource(), "Application");
+            }
+            EventLog.WriteEntry(ConfigHelper.GetApplicationErrorLogSource(), CreateErrorMessage(exception), EventLogEntryType.Error, 1);
+        }
+
+
+        private static string CreateErrorMessage(string exception)
+        {
+            return string.Format("TimeStamp: {0} \nMessage: {1} \n{2}", DateTime.Now, GetExecutingMethodName(), exception);
         }
 
         /// <summary>
