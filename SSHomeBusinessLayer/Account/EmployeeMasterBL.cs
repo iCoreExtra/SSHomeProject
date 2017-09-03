@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using SSHomeBusinessLayerTypes;
 using SSHomeRepositoryTypes;
 using SSHomeRepositoryFactory;
 using SSHomeDataModel;
+using SSHomeCommon;
 
 namespace SSHomeBusinessLayer
 {
@@ -24,6 +21,11 @@ namespace SSHomeBusinessLayer
             repository.Connection.Close();
         }
 
+        public Result<EmployeeMaster> Create(EmployeeMaster employeeMaster)
+        {
+            return repository.Create(employeeMaster);
+        }
+
         public List<EmployeeMaster> FindByName(string userName)
         {
             return repository.FindByName(userName);
@@ -32,6 +34,6 @@ namespace SSHomeBusinessLayer
         public EmployeeMaster FindByEmail(string email)
         {
             return repository.FindByEmail(email);
-        }
+        }       
     }
 }

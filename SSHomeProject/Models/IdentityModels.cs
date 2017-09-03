@@ -1,10 +1,6 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using SSHomeDataModel;
-using SSHomeBusinessLayerTypes;
-using System.Configuration;
 using System;
 
 namespace SSHomeProject.Models

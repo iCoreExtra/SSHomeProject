@@ -1,9 +1,7 @@
-﻿using SSHomeDataModel;
+﻿using SSHomeCommon;
+using SSHomeDataModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SSHomeBusinessLayerTypes
 {
@@ -12,5 +10,7 @@ namespace SSHomeBusinessLayerTypes
         List<EmployeeMaster> FindByName(string userName);
 
         EmployeeMaster FindByEmail(string email);
+
+        Result<EmployeeMaster> Create(EmployeeMaster employeeMaster);
     }
 }

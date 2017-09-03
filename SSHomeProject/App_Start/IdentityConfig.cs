@@ -11,6 +11,8 @@ using SSHomeProject.Unity;
 using SSHomeBusinessLayerTypes;
 using System.Collections.Generic;
 using SSHomeDataModel;
+using SSHomeDatalayerCommon;
+using SSHomeCommon;
 
 namespace SSHomeProject
 {
@@ -131,7 +133,10 @@ namespace SSHomeProject
 
         public Task CreateAsync(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            EmployeeMaster employee = new EmployeeMaster();
+            ConvertIdentityObjectToDomainObject(user, employee);
+            Result<EmployeeMaster> result = _service.Create(employee);            
+            return Task.FromResult<object>(null);
         }
 
         public Task DeleteAsync(ApplicationUser user)
@@ -215,6 +220,20 @@ namespace SSHomeProject
         {
             user.Email = employee.Email;
             user.UserName = employee.UserName;
+        }
+
+        public void ConvertIdentityObjectToDomainObject(ApplicationUser user, EmployeeMaster employee)
+        {
+            employee.UserName = user.Email;
+            employee.FirstName = user.FirstName;
+            employee.LastName = user.LastName;
+            employee.Mobile = user.Mobile;
+            employee.Email = user.Email;
+            employee.CreatedBy = 1;
+            employee.DateOfBirth = DateTime.Now;
+            employee.AnniversaryDate = DateTime.Now;
+            employee.DesignationId = 1;
+            employee.StoreId = 1;
         }
 
         #endregion
