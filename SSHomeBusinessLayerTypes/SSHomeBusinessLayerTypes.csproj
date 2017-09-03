@@ -53,6 +53,7 @@
     <Compile Include="Location\IStateMasterBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RawItem\IRawItemMasterBL.cs" />
+    <Compile Include="ReadyItem\IReadyItemMasterBL.cs" />
     <Compile Include="Referral\IReferralMasterBL.cs" />
     <Compile Include="Store\IStoreMasterBL.cs" />
     <Compile Include="Unit\IUnitMasterBL.cs" />
@@ -74,8 +75,6 @@
       <Name>SSHomeDataModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ReadyItem\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
