@@ -35,5 +35,10 @@ namespace SSHomeBusinessLayer
         {
             return repository.FindByEmail(email);
         }       
+
+        public EmployeeMaster FindById(int userId)
+        {
+            return repository.FindById(userId);
+        }
     }
 }

@@ -114,13 +114,30 @@ namespace SSHomeProject
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }
 
+        public override Task<SignInStatus> PasswordSignInAsync(string userName, string password, bool isPersistent, bool shouldLockout)
+        {
+
+            return base.PasswordSignInAsync(userName, password, isPersistent, shouldLockout);
+        }
+
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
+
+
+        #region Other Methods
+
+        
+
+        #endregion
     }
 
-    public class UserStore : IUserStore<ApplicationUser, int>, IUserEmailStore<ApplicationUser, int>
+    public class UserStore : IUserStore<ApplicationUser, int>, 
+        IUserEmailStore<ApplicationUser, int>,
+        IUserLockoutStore<ApplicationUser, int>,
+        IUserPasswordStore<ApplicationUser, int>,
+        IUserLoginStore<ApplicationUser, int>
     {
         private IEmployeeMasterBL _service;
 
@@ -135,7 +152,7 @@ namespace SSHomeProject
         {
             EmployeeMaster employee = new EmployeeMaster();
             ConvertIdentityObjectToDomainObject(user, employee);
-            Result<EmployeeMaster> result = _service.Create(employee);            
+            Result<EmployeeMaster> result = _service.Create(employee);
             return Task.FromResult<object>(null);
         }
 
@@ -163,7 +180,14 @@ namespace SSHomeProject
 
         public Task<ApplicationUser> FindByIdAsync(int userId)
         {
-            throw new NotImplementedException();
+            EmployeeMaster employeeMaster = _service.FindById(userId);
+            if (employeeMaster != null)
+            {
+                ApplicationUser user = new ApplicationUser();
+                ConvertEmployeeMasterToApplicationUser(employeeMaster, user);
+                return Task.FromResult<ApplicationUser>(user);
+            }
+            return Task.FromResult<ApplicationUser>(null);
         }
 
         public Task<ApplicationUser> FindByNameAsync(string userName)
@@ -176,7 +200,9 @@ namespace SSHomeProject
                 {
                     Id = m.Id,
                     UserName = m.UserName,
-                    Email = m.Email
+                    Email = m.Email,
+                    FirstName = m.FirstName,
+                    LastName = m.LastName
                 }).ToList();
                 return Task.FromResult<ApplicationUser>(users[0]);
             }
@@ -214,27 +240,118 @@ namespace SSHomeProject
 
         #endregion
 
+
+        #region IUserLockoutStore Methods
+
+        public Task<DateTimeOffset> GetLockoutEndDateAsync(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetLockoutEndDateAsync(ApplicationUser user, DateTimeOffset lockoutEnd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> IncrementAccessFailedCountAsync(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ResetAccessFailedCountAsync(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> GetAccessFailedCountAsync(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> GetLockoutEnabledAsync(ApplicationUser user)
+        {
+            return Task.FromResult(false);
+        }
+
+        public Task SetLockoutEnabledAsync(ApplicationUser user, bool enabled)
+        {
+            return Task.FromResult<object>(null);
+        }
+
+        #endregion
+
+        #region IUserPasswordStore Methods
+
+        public Task SetPasswordHashAsync(ApplicationUser user, string passwordHash)
+        {
+            user.PasswordHash = passwordHash;
+            return Task.FromResult(0);
+        }
+
+        public Task<string> GetPasswordHashAsync(ApplicationUser user)
+        {
+            user.PasswordHash = "sagar123";
+            return Task.FromResult<string>(user.PasswordHash);
+        }
+
+        public Task<bool> HasPasswordAsync(ApplicationUser user)
+        {
+            return Task.FromResult<bool>(!String.IsNullOrEmpty(user.Password));
+        }
+
+        #endregion
+
+        #region IUserStoreLogin Methods
+
+        public Task AddLoginAsync(ApplicationUser user, UserLoginInfo login)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveLoginAsync(ApplicationUser user, UserLoginInfo login)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IList<UserLoginInfo>> GetLoginsAsync(ApplicationUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ApplicationUser> FindAsync(UserLoginInfo login)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
         #region Conversion Methods
 
         public void ConvertEmployeeMasterToApplicationUser(EmployeeMaster employee, ApplicationUser user)
         {
             user.Email = employee.Email;
             user.UserName = employee.UserName;
+            user.Id = employee.Id;
+            user.FirstName = employee.FirstName;
+            user.LastName = employee.LastName;
         }
 
         public void ConvertIdentityObjectToDomainObject(ApplicationUser user, EmployeeMaster employee)
         {
             employee.UserName = user.Email;
+            employee.Password = user.Password;
             employee.FirstName = user.FirstName;
             employee.LastName = user.LastName;
             employee.Mobile = user.Mobile;
+            employee.Phone2 = user.Phone2;
             employee.Email = user.Email;
+            employee.Email2 = user.Email2;
             employee.CreatedBy = 1;
-            employee.DateOfBirth = DateTime.Now;
+            employee.DateOfBirth = user.DateOfBirth;
             employee.AnniversaryDate = DateTime.Now;
-            employee.DesignationId = 1;
-            employee.StoreId = 1;
-        }
+            employee.DesignationId = user.DesignationId;
+            employee.StoreId = user.StoreId;
+        }       
 
         #endregion
     }

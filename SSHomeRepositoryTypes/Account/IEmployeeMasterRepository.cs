@@ -11,5 +11,7 @@ namespace SSHomeRepositoryTypes
         List<EmployeeMaster> FindByName(string userName);
 
         EmployeeMaster FindByEmail(string email);
+
+        EmployeeMaster FindById(int userId);
     }
 }

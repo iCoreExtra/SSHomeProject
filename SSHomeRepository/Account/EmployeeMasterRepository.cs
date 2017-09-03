@@ -59,5 +59,12 @@ namespace SSHomeRepository
             param.AddDynamicParams(new { Email = email });
             return Query<EmployeeMaster>("USP_EmployeeMaster_GetByEmail", param, Transaction, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
+
+        public EmployeeMaster FindById(int userId)
+        {
+            DynamicParameters param = new DynamicParameters();
+            param.AddDynamicParams(new { Id = userId });
+            return Query<EmployeeMaster>("USP_EmployeeMaster_GetById", param, Transaction, commandType: CommandType.StoredProcedure).FirstOrDefault();
+        }
     }
 }

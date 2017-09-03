@@ -12,5 +12,7 @@ namespace SSHomeBusinessLayerTypes
         EmployeeMaster FindByEmail(string email);
 
         Result<EmployeeMaster> Create(EmployeeMaster employeeMaster);
+
+        EmployeeMaster FindById(int userId);
     }
 }
