@@ -1,0 +1,24 @@
+﻿@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model ReferralListViewModel
+
+@{
+    ViewBag.Title = "Referral List";
+}
+
+<div>
+    <div class="mid-cnt-wrap">
+        <div id="tabs">
+
+            <div id="searchContainer">
+
+            </div>
+
+            <div id="referralListContainer" style="padding:10px">
+                @Html.Partial(CommonConstant.ViewReferralUCReferralList)
+            </div>
+        </div>
+    </div>
+</div>
+

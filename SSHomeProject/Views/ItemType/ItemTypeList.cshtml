@@ -1,0 +1,23 @@
+﻿@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model ItemTypeListViewModel
+
+@{
+    ViewBag.Title = "Item Type List";
+}
+
+<div>
+    <div class="mid-cnt-wrap">
+        <div id="tabs">
+
+            <div id="searchContainer">
+
+            </div>
+
+            <div id="itemTypeListContainer" style="padding:10px">
+                @Html.Partial(CommonConstant.ViewItemUCItemTypeList)
+            </div>
+        </div>
+    </div>
+</div>

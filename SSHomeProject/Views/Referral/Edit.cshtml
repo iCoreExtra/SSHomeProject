@@ -1,0 +1,39 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model ReferralMasterViewModel
+
+@{
+    ViewBag.Title = "Update Referral";
+}
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionReferralEdit, CommonConstant.ControllerReferral, new { role = "form", enctype = "multipart/form-data", id = "frmEditReferral" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid" style="margin-top:50px;">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Source)
+                    @Html.TextBoxFor(model => model.Source, new { @placeholder = "Enter Referral" })
+                    @Html.ValidationMessageFor(model => model.Source, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="text-center form-group">
+            <input type="submit" value="Update" />
+        </div>
+
+        @Html.HiddenFor(Model => Model.ReferralId);
+    }
+</fieldset>
+

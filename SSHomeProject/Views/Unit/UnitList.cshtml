@@ -1,0 +1,23 @@
+﻿@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model UnitListViewModel
+
+@{
+    ViewBag.Title = "Unit List";
+}
+
+<div>
+    <div class="mid-cnt-wrap">
+        <div id="tabs">
+
+            <div id="searchContainer">
+
+            </div>
+
+            <div id="unitListContainer" style="padding:10px">
+                @Html.Partial(CommonConstant.ViewUnitUCUnitList)
+            </div>
+        </div>
+    </div>
+</div>

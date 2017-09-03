@@ -1,0 +1,36 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model UnitMasterViewModel
+
+@{
+    ViewBag.Title = "Create Unit";
+}
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionUnitCreate, CommonConstant.ControllerUnit, new { role = "form", enctype = "multipart/form-data", id = "frmCreateUnit" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid" style="margin-top:50px;">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Unit)
+                    @Html.TextBoxFor(model => model.Unit, new { @placeholder = "Enter Unit" })
+                    @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="text-center form-group">
+            <input type="submit" value="Create" />
+        </div>
+    }
+</fieldset>
+

@@ -1,0 +1,113 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model StoreMasterViewModel
+
+@{
+    ViewBag.Title = "Update Store";
+}
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionStoreEdit, CommonConstant.ControllerStore, new { role = "form", enctype = "multipart/form-data", id = "frmEditstore" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid" style="margin-top:50px;">
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Type)
+                    @Html.TextBoxFor(model => model.Type, new { @placeholder = "Enter Store Type" })
+                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { @placeholder = "Enter Store Name" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <span><b>Address Details</b></span>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AddressLine1)
+                    @Html.TextAreaFor(model => model.AddressLine1, new { @placeholder = "Enter Address Line 1" })
+                    @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.AddressLine2)
+                    @Html.TextAreaFor(model => model.AddressLine2, new { @placeholder = "Enter Address Line 2" })
+                    @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.Label("State") <span class="mandatory">*</span>
+                    @Html.DropDownListFor(model => model.StateId, DropDownHelper.StateByCountryList(1, Model.StateId), new { @id = "state" })
+                    @Html.ValidationMessageFor(model => model.StateId)
+                </div>
+                <div class="col-md-6">
+                    @Html.Label("City")
+                    <span class="mandatory">*</span>
+                    @Html.DropDownListFor(model => model.CityId, DropDownHelper.CityByStateList(Model.StateId, Model.CityId), new { @id = "city" })
+                    @Html.ValidationMessageFor(model => model.CityId)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.Pincode)
+                    @Html.TextBoxFor(model => model.Pincode, new { @placeholder = "Enter Pincode" })
+                    @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+        </div>
+
+            <div class="text-center form-group">
+                <input type="submit" value="Update" />
+            </div>
+
+            @Html.HiddenFor(Model => Model.StoreId);
+            @Html.HiddenFor(Model => Model.AddressId)
+    }
+</fieldset>
+
+@section scripts{
+    <script type="text/javascript">
+
+                $(window).load(function () {
+
+                });
+
+        $("#state").on("change", function () {
+            GetCity($("#state"), $("#city"));
+        });
+
+        function GetCity(state_id, city_id) {
+            $.ajax({
+                url: '@Url.Action("GetAllByStateId", "City")',
+                data: { 'stateId': $(state_id).val() },
+                dataType: "json",
+                success: function (results) {
+                    $(city_id).empty();
+                    var newOption = $('<option>');
+                    newOption.text("-- Select City --");
+                    newOption.val("0");
+                    $(city_id).prepend(newOption);
+                    $.each(results, function (index, value) {
+                        var newOption = $('<option>');
+                        newOption.attr('value', value.CityId).text(value.CityName);
+                        $(city_id).append(newOption);
+                    });
+                }
+            });
+        }
+
+    </script>
+}
+

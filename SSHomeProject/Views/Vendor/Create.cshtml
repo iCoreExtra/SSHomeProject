@@ -1,0 +1,240 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model VendorMasterViewModel
+@{
+    ViewBag.Title = "Create Vendor";
+}
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionVendorCreate, CommonConstant.ControllerVendor, new { role = "form", enctype = "multipart/form-data", id = "frmCreateVendor" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        if (Model.Mode == PageMode.Details)
+        {
+            <div class="container-fluid" style="margin-top:50px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "Enter First Name", disabled = "disabled" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Enter Last Name", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.CompanyName)
+                        @Html.TextBoxFor(model => model.CompanyName, new { @placeholder = "Enter Company Name", disabled = "disabled" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Contact1)
+                        @Html.TextBoxFor(model => model.Contact1, new { @placeholder = "Enter Contact No", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Contact2)
+                        @Html.TextBoxFor(model => model.Contact2, new { @placeholder = "Enter Contact No", disabled = "disabled" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email1)
+                        @Html.TextBoxFor(model => model.Email1, new { @placeholder = "Enter Email", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email2)
+                        @Html.TextBoxFor(model => model.Email2, new { @placeholder = "Enter Email", disabled = "disabled" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.GSTNo)
+                        @Html.TextBoxFor(model => model.GSTNo, new { @placeholder = "Enter GST No", @maxlength = "15", disabled = "disabled" })
+                    </div>
+                </div>
+                <br />
+                <span><b>Address Details</b></span>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.AddressLine1)
+                        @Html.TextAreaFor(model => model.AddressLine1, new { @placeholder = "Enter Address Line 1", disabled = "disabled" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.AddressLine2)
+                        @Html.TextAreaFor(model => model.AddressLine2, new { @placeholder = "Enter Address Line 2", disabled = "disabled" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("State") <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.StateId, DropDownHelper.StateByCountryList(1, Model.StateId), new { @id = "state", disabled = "disabled" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Label("City")
+                        <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.CityId, DropDownHelper.CityByStateList(Model.StateId, Model.CityId), new { @id = "city", disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Pincode)
+                        @Html.TextBoxFor(model => model.Pincode, new { @placeholder = "Enter Pincode", disabled = "disabled" })
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="text-center form-group">
+                <input type="button" value="Back" class="btn-backtolist" />
+            </div>
+
+        }
+        else
+        {
+            <div class="container-fluid" style="margin-top:50px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.FirstName)
+                        @Html.TextBoxFor(model => model.FirstName, new { @placeholder = "Enter First Name" })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.LastName)
+                        @Html.TextBoxFor(model => model.LastName, new { @placeholder = "Enter Last Name" })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.CompanyName)
+                        @Html.TextBoxFor(model => model.CompanyName, new { @placeholder = "Enter Company Name" })
+                        @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Contact1)
+                        @Html.TextBoxFor(model => model.Contact1, new { @placeholder = "Enter Contact No" })
+                        @Html.ValidationMessageFor(model => model.Contact1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Contact2)
+                        @Html.TextBoxFor(model => model.Contact2, new { @placeholder = "Enter Contact No" })
+                        @Html.ValidationMessageFor(model => model.Contact2, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email1)
+                        @Html.TextBoxFor(model => model.Email1, new { @placeholder = "Enter Email" })
+                        @Html.ValidationMessageFor(model => model.Email1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Email2)
+                        @Html.TextBoxFor(model => model.Email2, new { @placeholder = "Enter Email" })
+                        @Html.ValidationMessageFor(model => model.Email2, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.GSTNo)
+                        @Html.TextBoxFor(model => model.GSTNo, new { @placeholder = "Enter GST No", @maxlength="15"})
+                        @Html.ValidationMessageFor(model => model.GSTNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <span><b>Address Details</b></span>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.AddressLine1)
+                        @Html.TextAreaFor(model => model.AddressLine1, new { @placeholder = "Enter Address Line 1" })
+                        @Html.ValidationMessageFor(model => model.AddressLine1, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.AddressLine2)
+                        @Html.TextAreaFor(model => model.AddressLine2, new { @placeholder = "Enter Address Line 2" })
+                        @Html.ValidationMessageFor(model => model.AddressLine2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("State") <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.StateId, DropDownHelper.StateByCountryList(1, Model.StateId), new { @id = "state" })
+                        @Html.ValidationMessageFor(model => model.StateId)
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Label("City")
+                        <span class="mandatory">*</span>
+                        @Html.DropDownListFor(model => model.CityId, DropDownHelper.CityByStateList(Model.StateId, Model.CityId), new { @id = "city" })
+                        @Html.ValidationMessageFor(model => model.CityId)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Pincode)
+                        @Html.TextBoxFor(model => model.Pincode, new { @placeholder = "Enter Pincode" })
+                        @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="text-center form-group">
+                <input type="submit" value="Create" />
+            </div>
+        }
+        @Html.HiddenFor(model => model.AddressId)
+    }
+</fieldset>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+
+@section scripts{
+    <script type="text/javascript">
+
+                $(window).load(function () {
+
+                });
+
+                $(".btn-backtolist").on("click", function (e) {
+                    window.location = "@Url.Action(CommonConstant.ActionVendorList, CommonConstant.ControllerVendor)";
+                    e.preventDefault();
+                });
+
+        $("#state").on("change", function () {
+            GetCity($("#state"), $("#city"));
+        });
+
+        function GetCity(state_id, city_id) {
+            $.ajax({
+                url: '@Url.Action("GetAllByStateId", "City")',
+                data: { 'stateId': $(state_id).val() },
+                dataType: "json",
+                success: function (results) {
+                    $(city_id).empty();
+                    var newOption = $('<option>');
+                    newOption.text("-- Select City --");
+                    newOption.val("0");
+                    $(city_id).prepend(newOption);
+                    $.each(results, function (index, value) {
+                        var newOption = $('<option>');
+                        newOption.attr('value', value.CityId).text(value.CityName);
+                        $(city_id).append(newOption);
+                    });
+                }
+            });
+        }
+
+    </script>
+}
