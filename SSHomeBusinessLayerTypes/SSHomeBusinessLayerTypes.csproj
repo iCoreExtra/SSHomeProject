@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\IEmployeeMasterBL.cs" />
     <Compile Include="Brand\IBrandMasterBL.cs" />
     <Compile Include="Client\IClientMasterBL.cs" />
     <Compile Include="Common.cs" />
@@ -55,12 +59,18 @@
     <Compile Include="Vendor\IVendorMasterBL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">
-      <Project>{AA6072C0-DD53-4B25-A865-89E72D5E0AB4}</Project>
+      <Project>{aa6072c0-dd53-4b25-a865-89e72d5e0ab4}</Project>
       <Name>SSHomeCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\SSHomeDataModel\SSHomeDataModel.csproj">
-      <Project>{77A8379D-0D58-467E-9EC3-71528249631E}</Project>
+      <Project>{77a8379d-0d58-467e-9ec3-71528249631e}</Project>
       <Name>SSHomeDataModel</Name>
     </ProjectReference>
   </ItemGroup>

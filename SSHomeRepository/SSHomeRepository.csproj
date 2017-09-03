@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\EmployeeMasterRepository.cs" />
     <Compile Include="Brand\BrandMasterRepository.cs" />
     <Compile Include="Client\ClientMasterRepository.cs" />
     <Compile Include="Common\Base.cs" />

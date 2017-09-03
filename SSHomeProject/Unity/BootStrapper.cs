@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.Unity;
 using SSHomeBusinessLayerTypes;
 using SSHomeBusinessLayer;
+using SSHomeBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,9 @@ namespace SSHomeProject.Unity
             //ClientMaster
             container.RegisterType<IClientMasterBL, ClientMasterBL>();
 
+            container.RegisterType<IEmployeeMasterBL, EmployeeMasterBL>();
+            //container.RegisterType<AccountController>(new InjectionConstructor());
+            //container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
             return container;
         }
 

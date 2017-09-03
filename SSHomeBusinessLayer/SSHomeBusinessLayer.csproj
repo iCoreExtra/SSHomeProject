@@ -30,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Brand\BrandMasterBL.cs" />
     <Compile Include="Client\ClientMasterBL.cs" />
+    <Compile Include="Account\EmployeeMasterBL.cs" />
     <Compile Include="Common\BaseBL.cs" />
     <Compile Include="CustomerType\CustomerTypeMasterBL.cs" />
     <Compile Include="ItemType\ItemTypeMasterBL.cs" />
@@ -76,6 +81,11 @@
       <Name>SSHomeRepositoryTypes</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
   <ItemGroup>
     <Folder Include="ReadyItem\" />
   </ItemGroup>

@@ -1,13 +1,20 @@
 ﻿using System.Web.Mvc;
 using SSHomeCommon.Helpers;
 using SSHomeCommon.Constants;
+using System.Web;
+using Microsoft.AspNet.Identity;
+using SSHomeProject.Models;
+using System.Security.Claims;
 
 namespace SSHomeProject.Filters
 {
     public class CustomHandleErrorAttribute : HandleErrorAttribute
-    {
+    {       
         public override void OnException(ExceptionContext filterContext)
         {
+            // todo: work with this code for claims
+            ClaimsPrincipal claims= HttpContext.Current.User as ClaimsPrincipal;
+            
             if (filterContext.ExceptionHandled)
             {
                 return;

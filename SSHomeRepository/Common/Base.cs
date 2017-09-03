@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using SSHomeCommon.Helpers;
+using SSHomeRepositoryTypes;
 
 namespace SSHomeRepository
 {
@@ -19,7 +20,7 @@ namespace SSHomeRepository
 
         #region constructor
         // constructor
-        protected BaseRepository()
+        internal BaseRepository()
         {
             Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SSHomeConnectionString"].ConnectionString);
         }

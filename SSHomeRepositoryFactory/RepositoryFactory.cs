@@ -34,6 +34,7 @@ namespace SSHomeRepositoryFactory
 
         private static void LoadContainer()
         {
+            container.Add(typeof(IEmployeeMasterRepository), typeof(EmployeeMasterRepository));
             //RawItemMaster
             container.Add(typeof(IRawItemMasterRepository), typeof(RawItemMasterRepository));
 
