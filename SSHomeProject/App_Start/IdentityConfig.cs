@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using SSHomeDataModel;
 using SSHomeDatalayerCommon;
 using SSHomeCommon;
+using SSHomeProject.Helpers;
 
 namespace SSHomeProject
 {
@@ -97,7 +98,10 @@ namespace SSHomeProject
             return base.FindByNameAsync(userName);
         }
 
-        
+        public override Task<IdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
+        {
+            return base.ChangePasswordAsync(userId, currentPassword, newPassword);
+        }
 
     }
 
@@ -116,8 +120,17 @@ namespace SSHomeProject
 
         public override Task<SignInStatus> PasswordSignInAsync(string userName, string password, bool isPersistent, bool shouldLockout)
         {
+            IEmployeeMasterBL service = BootStrapper.Get<IEmployeeMasterBL>();
+            EmployeeMaster employee = service.GetPasswordByUserName(userName);
 
-            return base.PasswordSignInAsync(userName, password, isPersistent, shouldLockout);
+            if (string.Equals(employee.Password, password))
+            {
+                ApplicationUser user = new ApplicationUser() { UserName = employee.UserName, Id = employee.Id, FirstName = employee.FirstName, LastName = employee.LastName};
+                base.SignInAsync(user, isPersistent, rememberBrowser: false);
+                return Task.FromResult(SignInStatus.Success);
+            }
+            return Task.FromResult(SignInStatus.Failure);
+            
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
@@ -173,7 +186,7 @@ namespace SSHomeProject
             {
                 ApplicationUser user = new ApplicationUser();
                 ConvertEmployeeMasterToApplicationUser(employeeMaster, user);
-                return Task.FromResult<ApplicationUser>(user);
+                return Task.FromResult(user);
             }
             return Task.FromResult<ApplicationUser>(null);
         }
@@ -185,7 +198,7 @@ namespace SSHomeProject
             {
                 ApplicationUser user = new ApplicationUser();
                 ConvertEmployeeMasterToApplicationUser(employeeMaster, user);
-                return Task.FromResult<ApplicationUser>(user);
+                return Task.FromResult(user);
             }
             return Task.FromResult<ApplicationUser>(null);
         }
@@ -285,19 +298,20 @@ namespace SSHomeProject
         public Task SetPasswordHashAsync(ApplicationUser user, string passwordHash)
         {
             user.PasswordHash = passwordHash;
+            
             return Task.FromResult(0);
         }
 
         public Task<string> GetPasswordHashAsync(ApplicationUser user)
         {
-            user.PasswordHash = "sagar123";
-            return Task.FromResult<string>(user.PasswordHash);
+            EmployeeMaster employee = _service.GetPasswordByUserName(user.UserName);
+            return Task.FromResult(employee.Password);
         }
 
         public Task<bool> HasPasswordAsync(ApplicationUser user)
         {
             return Task.FromResult<bool>(!String.IsNullOrEmpty(user.Password));
-        }
+        }       
 
         #endregion
 
@@ -315,7 +329,7 @@ namespace SSHomeProject
 
         public Task<IList<UserLoginInfo>> GetLoginsAsync(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public Task<ApplicationUser> FindAsync(UserLoginInfo login)

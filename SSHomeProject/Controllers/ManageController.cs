@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SSHomeProject.Models;
+using SSHomeProject.Helpers;
 
 namespace SSHomeProject.Controllers
 {
@@ -63,13 +64,13 @@ namespace SSHomeProject.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : "";
 
-            var userId = User.Identity.GetUserId<int>();
+            var userId = UserHelper.GetUserId();
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 //PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 //TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
-                Logins = await UserManager.GetLoginsAsync(userId),
+                //Logins = await UserManager.GetLoginsAsync(userId),
                 //BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(User.Identity.GetUserId())
             };
             return View(model);
@@ -230,10 +231,10 @@ namespace SSHomeProject.Controllers
             {
                 return View(model);
             }
-            var result = await UserManager.ChangePasswordAsync(Int32.Parse(User.Identity.GetUserId()), model.OldPassword, model.NewPassword);
+            var result = await UserManager.ChangePasswordAsync(UserHelper.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
-                var user = await UserManager.FindByIdAsync(Int32.Parse(User.Identity.GetUserId()));
+                var user = await UserManager.FindByIdAsync(UserHelper.GetUserId());
                 if (user != null)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -333,7 +334,7 @@ namespace SSHomeProject.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -355,12 +356,13 @@ namespace SSHomeProject.Controllers
 
         private bool HasPassword()
         {
-            var user = UserManager.FindById(Int32.Parse(User.Identity.GetUserId()));
-            if (user != null)
-            {
-                return user.PasswordHash != null;
-            }
-            return false;
+            return true;
+            //var user = UserManager.FindById(Int32.Parse(User.Identity.GetUserId()));
+            //if (user != null)
+            //{
+            //    return user.PasswordHash != null;
+            //}
+            //return false;
         }
 
         private bool HasPhoneNumber()
@@ -384,6 +386,6 @@ namespace SSHomeProject.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

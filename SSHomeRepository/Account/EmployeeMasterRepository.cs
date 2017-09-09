@@ -66,5 +66,35 @@ namespace SSHomeRepository
             param.AddDynamicParams(new { Id = userId });
             return Query<EmployeeMaster>("USP_EmployeeMaster_GetById", param, Transaction, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
+
+        public EmployeeMaster GetPasswordByUserName(string userName)
+        {
+            DynamicParameters param = new DynamicParameters();
+            param.AddDynamicParams(new { UserName = userName });
+            return Query<EmployeeMaster>("USP_EmployeeMaster_ValidatePassword", param, Transaction, commandType: CommandType.StoredProcedure).FirstOrDefault();
+        }
+
+        public Result<EmployeeMaster> SetPasswordByUserName(string userName, string passwordHash)
+        {
+            Result<EmployeeMaster> result = new Result<EmployeeMaster>();
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.AddDynamicParams(new
+                {
+                    UserName = userName,
+                    Password = passwordHash
+                });
+
+                base.Execute("USP_EmployeeMaster_SetPassword", param, Transaction, commandType: CommandType.StoredProcedure);
+                result.Status = ResultStatus.Success;
+            }
+            catch (Exception ex)
+            {
+                SSHomeLogger.LogException(ex);
+                result.Status = ResultStatus.Failure;                
+            }
+            return result;
+        }
     }
 }

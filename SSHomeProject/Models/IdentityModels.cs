@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System;
+using SSHomeDataModel;
 
 namespace SSHomeProject.Models
 {
@@ -39,11 +40,12 @@ namespace SSHomeProject.Models
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            
+
+
+            userIdentity.AddClaim(new Claim(ClaimTypes.GivenName,FirstName));
+            userIdentity.AddClaim(new Claim(ClaimTypes.Surname, LastName));
             // Add custom user claims here
-
-            userIdentity.AddClaim(new Claim("", ""));
-
+            
             return userIdentity;
         }
     }

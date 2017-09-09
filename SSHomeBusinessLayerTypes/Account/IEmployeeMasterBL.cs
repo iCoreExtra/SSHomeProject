@@ -14,5 +14,9 @@ namespace SSHomeBusinessLayerTypes
         Result<EmployeeMaster> Create(EmployeeMaster employeeMaster);
 
         EmployeeMaster FindById(int userId);
+
+        EmployeeMaster GetPasswordByUserName(string userName);       
+
+        Result<EmployeeMaster> SetPasswordByUserName(string userName, string passwordHash);
     }
 }

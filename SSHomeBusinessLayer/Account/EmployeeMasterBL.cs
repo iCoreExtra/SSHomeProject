@@ -40,5 +40,15 @@ namespace SSHomeBusinessLayer
         {
             return repository.FindById(userId);
         }
+
+        public EmployeeMaster GetPasswordByUserName(string userName)
+        {
+            return repository.GetPasswordByUserName(userName);
+        }
+
+        public Result<EmployeeMaster> SetPasswordByUserName(string userName, string passwordHash)
+        {
+            return repository.SetPasswordByUserName(userName, passwordHash);
+        }
     }
 }

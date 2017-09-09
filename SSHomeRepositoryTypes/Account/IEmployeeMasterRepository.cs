@@ -13,5 +13,9 @@ namespace SSHomeRepositoryTypes
         EmployeeMaster FindByEmail(string email);
 
         EmployeeMaster FindById(int userId);
+
+        EmployeeMaster GetPasswordByUserName(string userName);
+
+        Result<EmployeeMaster> SetPasswordByUserName(string userName, string passwordHash);
     }
 }
