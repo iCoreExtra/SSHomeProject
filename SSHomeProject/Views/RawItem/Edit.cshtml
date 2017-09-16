@@ -1,0 +1,92 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model RawItemMasterViewModel
+
+@{
+    ViewBag.Title = "Create Raw Item";
+}
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionRawItemEdit, CommonConstant.ControllerRawItem, new { role = "form", enctype = "multipart/form-data", id = "frmEditRawMaterial" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.ItemName)
+                        @Html.TextBoxFor(model => model.ItemName, new { @placeholder = "Enter Item Name" })
+                        @Html.ValidationMessageFor(model => model.ItemName, " ", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Material)
+                        @Html.TextBoxFor(model => model.Material, new { @placeholder = "Enter Material" })
+                        @Html.ValidationMessageFor(model => model.Material, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("Unit")
+                        @Html.DropDownListFor(model => model.UnitId, DropDownHelper.UnitList(), new { @id = "UnitId" })
+                        @Html.ValidationMessageFor(model => model.UnitId, " ", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Label("Brand")
+                        @Html.DropDownListFor(model => model.BrandId, DropDownHelper.BrandList(), new { @id = "BrandId" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Label("Item Type")
+                        @Html.DropDownListFor(model => model.ItemTypeId, DropDownHelper.ItemTypeList(), new { @id = "UnitId" })
+                        @Html.ValidationMessageFor(model => model.ItemTypeId, " ", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.Label("Color")
+                        @Html.TextBoxFor(model => model.Color)
+                        @Html.ValidationMessageFor(model => model.Color, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description1)
+                        @Html.TextAreaFor(model => model.Description1, new { @placeholder = "Enter Description" })
+                        @Html.ValidationMessageFor(model => model.Description1, " ", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description2)
+                        @Html.TextAreaFor(model => model.Description2, new { @placeholder = "Enter Description" })
+                        @Html.ValidationMessageFor(model => model.Description2, " ", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description3)
+                        @Html.TextAreaFor(model => model.Description3, new { @placeholder = "Enter Description" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description4)
+                        @Html.TextAreaFor(model => model.Description4, new { @placeholder = "Enter Description" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Description5)
+                        @Html.TextAreaFor(model => model.Description5, new { @placeholder = "Enter Description" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center form-group">
+                <input type="submit" value="Update" />
+            </div>
+
+            @Html.HiddenFor(Model => Model.ItemId);
+    }
+</fieldset>
+

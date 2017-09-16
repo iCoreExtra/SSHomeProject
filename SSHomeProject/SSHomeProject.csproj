@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,8 +86,8 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20505.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
@@ -98,11 +99,11 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20505.0\lib\net40\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20505.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -215,25 +216,57 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
+    <Compile Include="Content\ResourceFiles\GeneralResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GeneralResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Content\ResourceFiles\AdminResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminResource.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CustomerTypeController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemTypeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RawItemController.cs" />
+    <Compile Include="Controllers\ReferralController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
+    <Compile Include="Filters\Common.cs" />
+    <Compile Include="Filters\CustomHandleErrorAttribute.cs" />
     <Compile Include="Controllers\SpecificationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AjaxExtension.cs" />
+    <Compile Include="Helpers\DropDownHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Helpers\CriteriaHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Brand\BrandMasterViewModel.cs" />
+    <Compile Include="Models\Client\ClientMasterViewModel.cs" />
+    <Compile Include="Models\CustomerType\CustomerTypeViewModel.cs" />
     <Compile Include="Models\Base\BaseModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ItemType\ItemTypeMasterViewModel.cs" />
+    <Compile Include="Models\Location\CityMaster.cs" />
+    <Compile Include="Models\Location\CountryMaster.cs" />
+    <Compile Include="Models\Location\StateMaster.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RawItem\RawItemMasterViewModel.cs" />
+    <Compile Include="Models\ReadyItem\ReadyItemMasterViewModel.cs" />
+    <Compile Include="Models\Referral\ReferralMasterViewModel.cs" />
+    <Compile Include="Models\Store\StoreMasterViewModel.cs" />
+    <Compile Include="Models\Unit\UnitMasterViewModel.cs" />
+    <Compile Include="Models\Vendor\VendorMasterViewModel.cs" />
     <Compile Include="Models\Specification\SpecificationCatalogue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -263,7 +296,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -297,6 +332,42 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\RawItem\Create.cshtml" />
+    <Content Include="Views\RawItem\RawItemList.cshtml" />
+    <Content Include="Views\RawItem\UCRawItemList.cshtml" />
+    <Content Include="Views\RawItem\Edit.cshtml" />
+    <Content Include="Views\Brand\Create.cshtml" />
+    <Content Include="Views\Brand\BrandList.cshtml" />
+    <Content Include="Views\Brand\UCBrandList.cshtml" />
+    <Content Include="Views\Brand\Edit.cshtml" />
+    <Content Include="Views\Unit\Create.cshtml" />
+    <Content Include="Views\Unit\UnitList.cshtml" />
+    <Content Include="Views\Unit\UCUnitList.cshtml" />
+    <Content Include="Views\Unit\Edit.cshtml" />
+    <Content Include="Views\ItemType\Create.cshtml" />
+    <Content Include="Views\ItemType\Edit.cshtml" />
+    <Content Include="Views\ItemType\ItemTypeList.cshtml" />
+    <Content Include="Views\ItemType\UCItemTypeList.cshtml" />
+    <Content Include="Views\Referral\Create.cshtml" />
+    <Content Include="Views\Referral\Edit.cshtml" />
+    <Content Include="Views\Referral\ReferralList.cshtml" />
+    <Content Include="Views\Referral\UCReferralList.cshtml" />
+    <Content Include="Views\CustomerType\Create.cshtml" />
+    <Content Include="Views\CustomerType\Edit.cshtml" />
+    <Content Include="Views\CustomerType\CustomerTypeList.cshtml" />
+    <Content Include="Views\CustomerType\UCCustomerTypeList.cshtml" />
+    <Content Include="Views\Store\Create.cshtml" />
+    <Content Include="Views\Store\StoreList.cshtml" />
+    <Content Include="Views\Store\UCStoreList.cshtml" />
+    <Content Include="Views\Store\Edit.cshtml" />
+    <Content Include="Views\Vendor\Create.cshtml" />
+    <Content Include="Views\Vendor\VendorList.cshtml" />
+    <Content Include="Views\Vendor\UCVendorList.cshtml" />
+    <Content Include="Views\Vendor\Edit.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\ClientList.cshtml" />
+    <Content Include="Views\Client\UCClientList.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
     <Content Include="Views\Specification\Create.cshtml" />
     <Content Include="Views\Specification\Index.cshtml" />
     <Content Include="Views\Specification\UCSearchSpecification.cshtml" />
@@ -304,6 +375,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Stylesheets\" />
+    <Folder Include="Models\ReadyRawItem\" />
+    <Folder Include="Views\City\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
@@ -342,6 +416,12 @@
       <Project>{77a8379d-0d58-467e-9ec3-71528249631e}</Project>
       <Name>SSHomeDataModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\ResourceFiles\GeneralResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GeneralResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Content\ResourceFiles\AdminResource.resx">

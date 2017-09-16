@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,8 +44,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address\AddressMaster.cs" />
+    <Compile Include="Brand\BrandMaster.cs" />
+    <Compile Include="Client\ClientMaster.cs" />
     <Compile Include="Common\Base.cs" />
+    <Compile Include="Employee\EmployeeMaster.cs" />
+    <Compile Include="CustomerType\CustomerTypeMaster.cs" />
+    <Compile Include="ItemType\ItemTypeMaster.cs" />
+    <Compile Include="Location\CityMaster.cs" />
+    <Compile Include="Location\CountryMaster.cs" />
+    <Compile Include="Location\StateMaster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RawItem\RawItemMaster.cs" />
+    <Compile Include="ReadyItem\ReadyItemMaster.cs" />
+    <Compile Include="ReadyRawItem\ReadyRawItemMaster.cs" />
+    <Compile Include="Referral\ReferralMaster.cs" />
+    <Compile Include="Store\StoreMaster.cs" />
+    <Compile Include="Unit\UnitMaster.cs" />
+    <Compile Include="Vendor\VendorMaster.cs" />
     <Compile Include="Specification\SpecificationCatalogue.cs" />
     <Compile Include="ValueType\ValueTypeMaster.cs" />
   </ItemGroup>
@@ -51,6 +70,9 @@
       <Project>{aa6072c0-dd53-4b25-a865-89e72d5e0ab4}</Project>
       <Name>SSHomeCommon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

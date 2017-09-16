@@ -1,6 +1,8 @@
 ﻿using Microsoft.Practices.Unity;
 using SSHomeBusinessLayer;
 using SSHomeBusinessLayerTypes;
+using SSHomeBusinessLayer;
+using SSHomeBusinessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +50,42 @@ namespace SSHomeProject.Unity
         private static IUnityContainer BuildUnityContainer()
         {
             container = new UnityContainer();
+            //RawItemMaster
+            container.RegisterType<IRawItemMasterBL,RawItemMasterBL>();
+
+            //UnitMaster
+            container.RegisterType<IUnitMasterBL,UnitMasterBL>();
+
+            //BrandMaster
+            container.RegisterType<IBrandMasterBL, BrandMasterBL>();
+
+            //ItemTypeMaster
+            container.RegisterType<IItemTypeMasterBL, ItemTypeMasterBL>();
+
+            //ReferralMaster
+            container.RegisterType<IReferralMasterBL, ReferralMasterBL>();
+
+            //CustomerTypeMaster
+            container.RegisterType<ICustomerTypeMasterBL, CustomerTypeMasterBL>();
+
+            //StoreMaster
+            container.RegisterType<IStoreMasterBL, StoreMasterBL>();
+
+            //StateMaster
+            container.RegisterType<IStateMasterBL, StateMasterBL>();
+
+            //CityMaster
+            container.RegisterType<ICityMasterBL, CityMasterBL>();
+
+            //VendorMaster
+            container.RegisterType<IVendorMasterBL, VendorMasterBL>();
+
+            //ClientMaster
+            container.RegisterType<IClientMasterBL, ClientMasterBL>();
+
+            container.RegisterType<IEmployeeMasterBL, EmployeeMasterBL>();
+            //container.RegisterType<AccountController>(new InjectionConstructor());
+            //container.RegisterType<IAuthenticationManager>(new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
             container.RegisterType<ISpecificationCatalogueBL, SpecificationCatalogueBL>();
             return container;
         }

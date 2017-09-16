@@ -1,0 +1,57 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model ReferralListViewModel
+
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            @if (Model.referralList.Count > 0)
+            {
+                <div class="seller-box-wrap">
+                    <div class="seller-frm-wrap">
+                        <div class="rfq-tbl-wrap">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rfq-tbl">
+                                <tbody>
+                                    <tr class="tbl-head">
+                                        <td class="text-center">Id</td>
+                                        <td class="text-center">Source</td>
+                                        <td class="text-center">Edit</td>
+                                    </tr>
+
+                                    @foreach (var referralDetails in Model.referralList)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                @referralDetails.ReferralId
+                                            </td>
+                                            <td class="text-center">
+                                                @referralDetails.Source
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionReferralEdit ,new { @referralId = referralDetails.ReferralId })">Edit</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <p>
+                        <div class="alert alert-info text-center" role="alert"> No Referrals....  </div>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+

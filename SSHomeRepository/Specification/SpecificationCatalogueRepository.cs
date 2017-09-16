@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SSHomeCommon;
 using SSHomeCommon.Helpers;
+using SSHomeDatalayerCommon;
 using SSHomeDataModel;
 using SSHomeRepositoryTypes;
 using System;

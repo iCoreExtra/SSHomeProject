@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\CommonConstant.cs" />
+    <Compile Include="Enums\PageMode.cs" />
+    <Compile Include="Helpers\CommonHelper.cs" />
     <Compile Include="Helpers\CacheHelper.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\ActivatorHelper.cs" />

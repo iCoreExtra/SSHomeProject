@@ -1,0 +1,59 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model StoreListViewModel
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            @if (Model.StoreList.Count > 0)
+            {
+                <div class="seller-box-wrap">
+                    <div class="seller-frm-wrap">
+                        <div class="rfq-tbl-wrap">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rfq-tbl">
+                                <tbody>
+                                    <tr class="tbl-head">
+                                        <td class="text-center">Store Type</td>
+                                        <td class="text-center">Store Name</td>
+                                        <td class="text-center">Details</td>
+                                        <td class="text-center">Edit</td>
+                                    </tr>
+
+                                    @foreach (var storeDetails in Model.StoreList)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                @storeDetails.Type
+                                            </td>
+                                            <td class="text-center">
+                                                @storeDetails.Name  
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionStoreDetails ,new { @storeId = storeDetails.StoreId })">Details</a>
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionStoreEdit ,new { @storeId = storeDetails.StoreId })">Edit</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <p>
+                        <div class="alert alert-info text-center" role="alert"> No Stores..  </div>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

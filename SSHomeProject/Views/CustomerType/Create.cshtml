@@ -1,0 +1,36 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+@using SSHomeCommon.Enums;
+
+@model CustomerTypeMasterViewModel
+
+@{
+    ViewBag.Title = "Create Customer Type";
+}
+
+<fieldset>
+    @using (Html.BeginForm(CommonConstant.ActionCustomerTypeCreate, CommonConstant.ControllerCustomerType, new { role = "form", enctype = "multipart/form-data", id = "frmCreateCustomerType" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid" style="margin-top:50px;">
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.CustomerType)
+                    @Html.TextBoxFor(model => model.CustomerType, new { @placeholder = "Enter Customer Type" })
+                    @Html.ValidationMessageFor(model => model.CustomerType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="text-center form-group">
+            <input type="submit" value="Create" />
+        </div>
+    }
+</fieldset>
+

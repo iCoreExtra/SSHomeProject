@@ -1,0 +1,67 @@
+﻿@using SSHomeProject.Helpers;
+@using SSHomeCommon.Helpers;
+@using SSHomeCommon.Constants;
+@using SSHomeProject.Models;
+
+@model VendorListViewModel
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            @if (Model.VendorList.Count > 0)
+            {
+                <div class="seller-box-wrap">
+                    <div class="seller-frm-wrap">
+                        <div class="rfq-tbl-wrap">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rfq-tbl">
+                                <tbody>
+                                    <tr class="tbl-head">
+                                        <td class="text-center">Name</td>
+                                        <td class="text-center">Company</td>
+                                        <td class="text-center">Contact No</td>
+                                        <td class="text-center">Email Id</td>
+                                        <td class="text-center">Details</td>
+                                        <td class="text-center">Edit</td>
+                                    </tr>
+
+                                    @foreach (var vedorDetails in Model.VendorList)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                               @vedorDetails.FirstName  @vedorDetails.LastName 
+                                            </td>
+                                            <td class="text-center">
+                                                @vedorDetails.CompanyName
+                                            </td>
+                                            <td class="text-center">
+                                                @vedorDetails.Contact1
+                                            </td>
+                                            <td class="text-center">
+                                                @vedorDetails.Email1
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionVendorDetails ,new { @vendorId = vedorDetails.VendorId })">Details</a>
+                                            </td>
+                                            <td>
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionVendorEdit ,new { @vendorId = vedorDetails.VendorId  })">Edit</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <p>
+                        <div class="alert alert-info text-center" role="alert"> No Vendors..  </div>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

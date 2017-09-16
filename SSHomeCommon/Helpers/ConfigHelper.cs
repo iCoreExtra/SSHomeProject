@@ -17,6 +17,10 @@ namespace SSHomeCommon.Helpers
         {
             return 10;
         }
+        public static string GetApplicationErrorLogSource()
+        {
+            return ConfigurationManager.AppSettings[CommonConstant.ErrorLogSource];
+        }
     }
 
 
