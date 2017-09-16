@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using SSHomeBusinessLayer;
 using SSHomeBusinessLayerTypes;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace SSHomeProject.Unity
         private static IUnityContainer BuildUnityContainer()
         {
             container = new UnityContainer();
-
+            container.RegisterType<ISpecificationCatalogueBL, SpecificationCatalogueBL>();
             return container;
         }
 

@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +43,24 @@
   <ItemGroup>
     <Compile Include="CustomValidationAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">
+      <Project>{AA6072C0-DD53-4B25-A865-89E72D5E0AB4}</Project>
+      <Name>SSHomeCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSHomeDataModel\SSHomeDataModel.csproj">
+      <Project>{77A8379D-0D58-467E-9EC3-71528249631E}</Project>
+      <Name>SSHomeDataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSHomeRepositoryFactory\SSHomeRepositoryFactory.csproj">
+      <Project>{747C0C77-0FB8-4A8B-9AF6-FFC71F846EBD}</Project>
+      <Name>SSHomeRepositoryFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSHomeRepositoryTypes\SSHomeRepositoryTypes.csproj">
+      <Project>{CDA22857-4F9A-4D02-B40D-15C3244740B0}</Project>
+      <Name>SSHomeRepositoryTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

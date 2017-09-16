@@ -1,0 +1,40 @@
+﻿@using SSHomeProject.Models
+@using SSHomeCommon.Constants
+
+@model SpecificationCatalogueViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="seller-right-col">
+        <div class="seller-head">
+            <div class="mobile-menu-btn-wrap">
+                <a class="animateddrawer" id="mobiletoggle"> </a>
+                <div class="menu-overlay"></div>
+            </div>
+            <h1>Product Categories</h1>
+
+            <div class="clear"></div>
+        </div>
+
+        <div id="searchContainer">
+
+            @Html.Partial(CommonConstant.ViewAdminUCSearchSpecification)
+        </div>
+
+
+        <div id="pendingSellerApprovalContainer" style="padding:10px;">
+            @Html.Partial(CommonConstant.ViewAdminUCSpecification)
+        </div>
+    </div>
+</body>
+</html>

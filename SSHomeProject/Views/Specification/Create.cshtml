@@ -1,0 +1,107 @@
+﻿@using SSHomeCommon.Constants
+@using SSHomeProject.Content.ResourceFiles
+
+@model SSHomeProject.Models.SpecificationCatalogueViewModelForAdd
+
+@{
+    ViewBag.Title = "Create Specification";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create Specifications</title>
+</head>
+<body>
+    <div>
+        <div class="seller-right-col">
+            <div class="seller-head">
+                <div class="mobile-menu-btn-wrap">
+                    <a class="animateddrawer" id="mobiletoggle"> </a>
+                    <div class="menu-overlay"></div>
+                </div>
+                <h1>Specification</h1>
+
+                <div class="clear"></div>
+            </div>
+            <!-- start form -->
+            @using (Html.BeginForm(CommonConstant.ActionSpecificationCreate, CommonConstant.ControllerSpecification, FormMethod.Post, new { role = "form", enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+                    <div class="form-group">&nbsp;</div>
+                    <div class="row">
+
+                        <!-- Parent Category-->
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-6">
+                                Parent Specification
+                                <span class="red">*</span>
+                            </div>
+                            <div class="col-md-4 col-sm-6 form-group">
+                                @Html.DropDownListFor(model => model.ParentSpecificationId, Model.SpecificationList, AdminResource.SelectParentSpecificationLabel, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ParentSpecificationId)
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <!-- Category Code-->
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-6">
+                                Specification Code
+                                <span class="red">*</span>
+                            </div>
+                            <div class="col-md-4 col-sm-6 form-group">
+                                @Html.TextBoxFor(model => model.SpecificationCode, new { @placeholder = "Specification Code", @class = "form-control", @maxlength = 100 })
+                                @Html.ValidationMessageFor(model => model.SpecificationCode)
+                            </div><div class="clearfix"></div>
+                        </div>
+
+                        <!-- Category Name-->
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-6">
+                                Specification Name
+                                <span class="red">*</span>
+                            </div>
+                            <div class="col-md-4 col-sm-6 form-group">
+                                @Html.TextBoxFor(model => model.SpecificationName, new { @placeholder = "Specification Name", @class = "form-control", @maxlength = 100 })
+                                @Html.ValidationMessageFor(model => model.SpecificationName)
+                            </div><div class="clearfix"></div>
+                        </div>
+
+                        <div class="form-group">
+                                <div class="col-md-2 col-sm-6">
+                                    Parent Specification
+                                    <span class="red">*</span>
+                                </div>
+                                <div class="col-md-4 col-sm-6 form-group">
+                                    @Html.DropDownListFor(model => model.ValueTypeId, Model.ValueTypeList, AdminResource.SelectParentSpecificationLabel, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ParentSpecificationId)
+                                </div>
+                                <div class="clearfix"></div>
+                        </div>
+
+                        <!-- Save and back to list button-->
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-6"></div>
+                            <div class="col-md-4 col-sm-6 form-group">
+                                <div class="update-section">
+                                    <input type="submit" value="Create" title="Create" class="white-btn grey-btn">
+                                    @Html.ActionLink("Back to List", CommonConstant.ActionSpecificationIndex, CommonConstant.ControllerSpecification, null, new { title = "Back to List", @class = "white-btn grey-btn" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    @Html.HiddenFor(model => model.Id)
+                </fieldset>
+            }
+        </div>
+    </div>
+</body>
+</html>

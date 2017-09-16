@@ -1,0 +1,35 @@
+﻿@using SSHomeProject.Models
+@using SSHomeCommon.Constants
+
+
+@model SpecificationCatalogueViewModel
+
+@using (Ajax.BeginForm(CommonConstant.ActionSpecificationIndex, CommonConstant.ControllerSpecification,
+                                                                                                    new AjaxOptions
+                                                                                                    {
+                                                                                                        InsertionMode = InsertionMode.Replace,
+                                                                                                        OnBegin = "",
+                                                                                                        OnComplete = "",
+                                                                                                    }))
+{
+    <div class="search-section-wrap">
+        <ul class="search-sec-ul">
+            <li>
+                @Html.DropDownListFor(model => model.ValueTypeId, Model.ValueType, new { @class = "search-input-txt", @id = "prod_parent_cat" })
+            </li>
+            <li>
+                @Html.TextBoxFor(model => model.SpecificationCode, new { @class = "search-input-txt", @placeholder = "Enter Specification Code" })
+            </li>
+            <li>
+                @Html.TextBoxFor(model => model.SpecificationName, new { @class = "search-input-txt", @placeholder = "Enter Specification Name" })
+            </li>
+
+            <li class="action-btn-li">
+                <input type="submit" id="btnProductCategory" class="form-button small-btn" title="Search" value="Search" />
+                <input type="button" id="btnClearFilter" class="form-button small-btn" title="Clear" value="Clear" />
+            </li>
+        </ul>
+    </div>
+
+    @Html.HiddenFor(m => m.IsPartialView)
+}

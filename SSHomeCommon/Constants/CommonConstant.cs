@@ -12,6 +12,8 @@ namespace SSHomeCommon.Constants
         #region Controller
 
         public const string ControllerError = "Error";
+        public const string ControllerSpecification = "Specification";
+        public const string ActionSpecificationIndex = "Index";
 
         #endregion
 
@@ -23,7 +25,21 @@ namespace SSHomeCommon.Constants
         public const string ActionErrorUnauthorize = "Unauthorize";
         public const string ActionErrorAjaxError = "AjaxError";
 
+
+        public const string ActionSpecificationCreate = "Create";
+        public const string ViewAdminUCSearchSpecification = "UCSearchSpecification";
+        public const string ViewAdminUCSpecification = "UCSpecification";
+
         #endregion Action Methods
+
+        #region Config Constant
+        public const string CacheExpirationTimeInHours = "CacheExpirationTimeInHours";
+        #endregion
+
+        #region Cache Constant
+        public const string CacheSpecification = "Specification";
+        public const string CacheValue = "Value";
+        #endregion
 
     }
 }

@@ -13,8 +13,8 @@ namespace SSHomeDataModel
     public class BaseCatalogue : ICatalogue
     {
         public DateTime CreatedOn { get; set; } // createdon
-        public Guid CreatedBy { get; set; } // createdby
-        public Guid UpdatedBy { get; set; } // updateby
+        public int CreatedBy { get; set; } // createdby
+        public int UpdatedBy { get; set; } // updateby
         public DateTime UpdatedOn { get; set; } // updateon
         public bool Status { get; set; } // status
         public int? ErrorCode { get; set; } //error code

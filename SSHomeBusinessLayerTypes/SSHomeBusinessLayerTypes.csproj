@@ -42,6 +42,17 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specification\ISpecificationCatalogueBL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSHomeCommon\SSHomeCommon.csproj">
+      <Project>{AA6072C0-DD53-4B25-A865-89E72D5E0AB4}</Project>
+      <Name>SSHomeCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSHomeDataModel\SSHomeDataModel.csproj">
+      <Project>{77A8379D-0D58-467E-9EC3-71528249631E}</Project>
+      <Name>SSHomeDataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

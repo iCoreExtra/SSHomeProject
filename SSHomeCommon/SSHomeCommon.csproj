@@ -31,7 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,10 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\CommonConstant.cs" />
+    <Compile Include="Helpers\CacheHelper.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\ActivatorHelper.cs" />
     <Compile Include="Helpers\SSHomeLogger.cs" />
+    <Compile Include="Paging\Criteria.cs" />
+    <Compile Include="Paging\PageOption.cs" />
+    <Compile Include="Paging\Parameter.cs" />
+    <Compile Include="Paging\SortOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\Result.cs" />
+    <Compile Include="Result\ResultStatus.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

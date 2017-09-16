@@ -1,0 +1,55 @@
+﻿@using SSHomeProject.Models
+@using SSHomeCommon.Constants
+
+@model SpecificationCatalogueViewModel
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            @if (Model.Specifications.Count > 0)
+            {
+                <div class="seller-box-wrap">
+                    <div class="seller-frm-wrap">
+                        <div class="rfq-tbl-wrap">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="rfq-tbl">
+                                <tbody>
+                                    <tr class="tbl-head">
+                                        <td class="text-center">Code</td>
+                                        <td class="text-center">Name</td>
+                                        <td class="text-center">Parent Name</td>
+                                        @*<td class="text-center">Status</td>*@
+                                        <td class="text-center">Value Type</td>
+                                        <td class="text-center"> Edit </td>
+                                    </tr>
+                                    @foreach (var specificationDetails in Model.Specifications)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                @specificationDetails.Code
+                                            </td>
+                                            <td class="text-center">
+                                                @specificationDetails.Name
+                                            </td>
+                                            <td class="text-center">
+                                                @specificationDetails.ParentName
+                                            </td>
+                                            @*<td class="text-center">
+                                                @specificationDetails.Status
+                                            </td>*@
+                                            <td class="text-center">
+                                                @Model.ValueType.SingleOrDefault(m=>m.Value==specificationDetails.ValueTypeId.ToString()).Text
+                                            </td>
+                                            <td class="text-center">
+                                                <a class="white-btn grey-btn" href="@Url.Action(CommonConstant.ActionSpecificationIndex, CommonConstant.ControllerSpecification, new { @id = specificationDetails.Id })">Edit</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

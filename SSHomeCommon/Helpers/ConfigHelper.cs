@@ -1,13 +1,23 @@
 ﻿using SSHomeCommon.Constants;
+using System;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SSHomeCommon.Helpers
 {
     public static class ConfigHelper
     {
-        
+        public static double GetCacheExpirationTimeInHours()
+        {
+            double value;
+            double.TryParse(ConfigurationManager.AppSettings[CommonConstant.CacheExpirationTimeInHours], out value);
+            return value;
+        }
+
+        public static int GetPageSize(int page = 0)
+        {
+            return 10;
+        }
     }
+
+
 }
