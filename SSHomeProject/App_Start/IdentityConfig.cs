@@ -38,9 +38,12 @@ namespace SSHomeProject
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser, int>
     {
+        private IEmployeeMasterBL _service;
+
         public ApplicationUserManager(IUserStore<ApplicationUser, int> store)
             : base(store)
         {
+            _service = BootStrapper.Get<IEmployeeMasterBL>();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
@@ -93,16 +96,43 @@ namespace SSHomeProject
 
         public override Task<ApplicationUser> FindByNameAsync(string userName)
         {
-
+            
+            if (string.IsNullOrEmpty(UserHelper.GetUserName()))
+            {
+                return base.FindByNameAsync(userName);
+            }
             // call repository get generic claa obj or list back apply conversion
-            return base.FindByNameAsync(userName);
+            return Task.FromResult(UserHelper.GetUserModel());
+        }
+
+        public override Task<ApplicationUser> FindByIdAsync(int userId)
+        {
+            if (string.IsNullOrEmpty(UserHelper.GetUserName()))
+            {
+                return base.FindByIdAsync(userId);
+            }
+            return Task.FromResult(UserHelper.GetUserModel());
         }
 
         public override Task<IdentityResult> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
         {
-            return base.ChangePasswordAsync(userId, currentPassword, newPassword);
-        }
-
+            IUserPasswordStore<ApplicationUser, int> userPasswordStore = new UserStore(_service);
+            ApplicationUser user = new ApplicationUser()
+            {
+                UserName = UserHelper.GetUserName(),
+                Id = UserHelper.GetUserId()
+            };
+            string oldPassword = (userPasswordStore.GetPasswordHashAsync(user)).Result;
+            if (oldPassword.Equals(currentPassword))
+            {                
+                Task task = userPasswordStore.SetPasswordHashAsync(user, newPassword);
+                if (task.Status == TaskStatus.RanToCompletion)
+                {
+                    return Task.FromResult(IdentityResult.Success);
+                }
+            }
+            return Task.FromResult(IdentityResult.Failed());
+        }        
     }
 
     // Configure the application sign-in manager which is used in this application.
@@ -297,8 +327,7 @@ namespace SSHomeProject
 
         public Task SetPasswordHashAsync(ApplicationUser user, string passwordHash)
         {
-            user.PasswordHash = passwordHash;
-            
+            user.PasswordHash = passwordHash;            
             return Task.FromResult(0);
         }
 
